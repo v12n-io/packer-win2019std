@@ -1,6 +1,4 @@
 # packer-win2019std
-Packer build for Windows Server 2019 Std
-
 This repository contains a Packer build for Windows Server 2019 Standard on a vSphere platform.
 ## Structure
 
