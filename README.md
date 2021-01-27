@@ -4,6 +4,7 @@ Packer build for Windows Server 2019 Std
 This repository contains a Packer build for Windows Server 2019 Standard on a vSphere platform.
 ## Structure
 
+```
 ├── README.md
 ├── config
 │   └── Autounattend.xml
@@ -21,6 +22,7 @@ This repository contains a Packer build for Windows Server 2019 Standard on a vS
 │   ├── var-common.json
 │   └── var-win2019std.json
 └── win2019std.json
+```
 
 The Packer template itself is in the root of the repository and is named "win2019std.json". This file is used by Packer to build / provision the template in to vSphere.
 
