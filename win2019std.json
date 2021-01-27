@@ -68,7 +68,7 @@
     "post-processors": [
         {
             "type":                 "manifest",
-            "output":               "output.json",
+            "output":               "win2019std.json",
             "strip_path":           false
         }
     ]
