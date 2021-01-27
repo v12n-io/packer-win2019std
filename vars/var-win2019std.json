@@ -1,0 +1,19 @@
+{
+    "vcenter_folder":       "Templates/Windows",
+    "iso_path":             "os/microsoft/server/2019",
+    "iso_file":             "en_windows_server_2019_updated_dec_2020_x64_dvd_36e0f791.iso",
+    "guest_username":       "Administrator",
+    "guest_password":       "{{env `WINDOWSPASS`}}",
+    "guest_type":           "windows9Server64Guest",
+    "build_version":        "{{env `BUILDVERSION`}}",
+    "build_repo":           "{{env `BUILDREPO`}}",
+    "build_branch":         "{{env `BUILDBRANCH`}}",
+    "cpu_count":            "2",
+    "mem_count":            "4096",
+    "disk_size":            "51200",
+    "disk_thin":            "true",
+    "disk_controller":      "pvscsi",
+    "network_card":         "vmxnet3",
+    "floppy_files":         "config/Autounattend.xml,scripts/00-vmtools64.cmd,scripts/01-initialise.ps1",
+    "script_files":         "scripts/03-systemsettings.ps1,scripts/04-tlsconfig.ps1,scripts/10-createuser.ps1,scripts/40-ssltrust.ps1,scripts/60-openssh.ps1,scripts/80-ansible.ps1,scripts/95-enablerdp.ps1"
+}
