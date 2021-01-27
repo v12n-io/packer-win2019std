@@ -1,5 +1,5 @@
 {
-    "vcenter_folder":       "Templates/Windows",
+    "vcenter_folder":       "Templates/Windows2019",
     "iso_path":             "os/microsoft/server/2019",
     "iso_file":             "en_windows_server_2019_updated_dec_2020_x64_dvd_36e0f791.iso",
     "guest_username":       "Administrator",
