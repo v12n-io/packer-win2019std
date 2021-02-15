@@ -33,4 +33,4 @@ plugins=cloudbaseinit.plugins.common.userdata.UserDataPlugin
 New-Item -Path $confPath -Name $confFile -ItemType File -Force -Value $confContent
 
 # Delete install MSI file
-Remove-Item C:\$msiFileName -Confirm:$false
+#Remove-Item C:\$msiFileName -Confirm:$false
