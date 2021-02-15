@@ -32,6 +32,9 @@ plugins=cloudbaseinit.plugins.common.userdata.UserDataPlugin
 "@
 New-Item -Path $confPath -Name $confFile -ItemType File -Force -Value $confContent
 
+# Change service startup type
+Set-Service -Name cloudbase-init -StartupType Manual
+
 # Tidy up
 Remove-Item -Path ($confPath + "cloudbase-init-unattend.conf") -Confirm:$false 
 Remove-Item -Path ($confPath + "Unattend.xml") -Confirm:$false 
