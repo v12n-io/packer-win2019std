@@ -11,7 +11,7 @@ Invoke-WebRequest -Uri ($msiLocation + "/" + $msiFileName) -OutFile C:\$msiFileN
 Unblock-File -Path C:\$msiFileName
 
 # Install Cloudbase-Init
-Start-Process msiexec.exe -ArgumentList "/i C:\$msiFileName /qn /norestart"
+Start-Process msiexec.exe -ArgumentList "/i C:\$msiFileName /qn /norestart RUN_SERVICE_AS_LOCAL_SYSTEM=1" -Wait
 
 # Overwrite cloudbaseinit.conf
 $confFile = "cloudbase-init.conf"
@@ -32,5 +32,7 @@ plugins=cloudbaseinit.plugins.common.userdata.UserDataPlugin
 "@
 New-Item -Path $confPath -Name $confFile -ItemType File -Force -Value $confContent
 
-# Delete install MSI file
-#Remove-Item C:\$msiFileName -Confirm:$false
+# Tidy up
+Remove-Item -Path ($confPath + "cloudbase-init-unattend.conf") -Confirm:$false 
+Remove-Item -Path ($confPath + "Unattend.xml") -Confirm:$false 
+Remove-Item C:\$msiFileName -Confirm:$false
