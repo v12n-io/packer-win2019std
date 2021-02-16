@@ -33,7 +33,9 @@ plugins=cloudbaseinit.plugins.common.userdata.UserDataPlugin
 New-Item -Path $confPath -Name $confFile -ItemType File -Force -Value $confContent
 
 # Change service startup type
-Set-Service -Name cloudbase-init -StartupType Manual
+#Set-Service -Name cloudbase-init -StartupType Manual
+$command = "sc.exe config cloudbase-init start= delayed-auto"
+$output = Invoke-Expression -Command $command -ErrorAction Stop
 
 # Tidy up
 Remove-Item -Path ($confPath + "cloudbase-init-unattend.conf") -Confirm:$false 
