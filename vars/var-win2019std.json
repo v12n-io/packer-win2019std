@@ -15,5 +15,5 @@
     "disk_controller":      "pvscsi",
     "network_card":         "vmxnet3",
     "floppy_files":         "config/Autounattend.xml,scripts/00-vmtools64.cmd,scripts/01-initialise.ps1",
-    "script_files":         "scripts/03-systemsettings.ps1,scripts/04-tlsconfig.ps1,scripts/10-createuser.ps1,scripts/40-ssltrust.ps1,scripts/60-openssh.ps1,scripts/80-ansible.ps1,scripts/90-cloudinit.ps1,scripts/95-enablerdp.ps1"
+    "script_files":         "scripts/03-systemsettings.ps1,scripts/04-tlsconfig.ps1,scripts/10-createuser.ps1,scripts/30-powershell.ps1,scripts/40-ssltrust.ps1,scripts/60-openssh.ps1,scripts/80-ansible.ps1,scripts/90-cloudinit.ps1,scripts/95-enablerdp.ps1"
 }
