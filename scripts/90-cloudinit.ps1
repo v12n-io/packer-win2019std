@@ -32,6 +32,29 @@ plugins=cloudbaseinit.plugins.common.userdata.UserDataPlugin
 "@
 New-Item -Path $confPath -Name $confFile -ItemType File -Force -Value $confContent
 
+# Update configdrive.py (to unmount the ISO file after completion)
+# From https://ask.cloudbase.it/question/2939/how-to-umount-cd-drive-after-cloudbase-init-completed/
+$filePath = "C:\Program Files\Cloudbase Solutions\Cloudbase-Init\Python\Lib\site-packages\cloudbaseinit\metadata\services\configdrive.py"
+$topOfFile = @"
+import os
+import shutil
+import ctypes
+
+"@
+$bottomOfFile = @"
+
+    def cleanup(self):
+        LOG.debug('Deleting metadata folder: %r', self._mgr.target_path)
+        shutil.rmtree(self._mgr.target_path, ignore_errors=True)
+        self._metadata_path = None
+        drive_letter = os.popen('wmic logicaldisk where VolumeName="OVF ENV" get Caption | findstr /I ":"').read()
+        if drive_letter:
+            LOG.debug('Eject metadata drive: %s', str(drive_letter).rstrip())
+            ctypes.windll.WINMM.mciSendStringW(u"open " + str(drive_letter).rstrip() + " type cdaudio alias d_drive", None, 0, None)
+            ctypes.windll.WINMM.mciSendStringW(u"set d_drive door open", None, 0, None)
+"@
+Set-Content -Path $filePath -Value ($topOfFile + (Get-Content -Path $filePath) + $bottomOfFile)
+
 # Change service startup type
 #Set-Service -Name cloudbase-init -StartupType Manual
 & sc.exe config cloudbase-init start= delayed-auto
