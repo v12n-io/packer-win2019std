@@ -1,7 +1,7 @@
 {
     "vcenter_folder":       "Templates/Windows2019",
     "iso_path":             "os/microsoft/server/2019",
-    "iso_file":             "en_windows_server_2019_updated_jan_2021_x64_dvd_5ef22372.iso",
+    "iso_file":             "en_windows_server_2019_updated_feb_2021_x64_dvd_277a6bfe.iso",
     "guest_username":       "Administrator",
     "guest_password":       "{{env `WINDOWSPASS`}}",
     "guest_type":           "windows9Server64Guest",
